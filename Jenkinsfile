@@ -28,6 +28,7 @@ pipeline {
         stage('Deploy to openshift') {
             steps {
                 sh 'oc project $OPENSHIFT_PROJECT'
+                sh 'oc delete all,imagestream,buildconfig -l app=omni-app'
                 sh 'oc new-app openshift/nodejs:18-ubi9~https://github.com/Bameth/omni365-showcase.git --name=omni-app'
             }
         }
