@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npx serve -p 8080 omni365-showcase/browser",
+    "start": "npx serve -s -p 8080 dist/omni365-showcase/browser",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
