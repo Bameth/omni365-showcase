@@ -1,7 +1,7 @@
 <!-- header.component.html -->
 <header class="fixed top-0 w-full z-50 transition-all duration-300" [class.bg-white/95]="isScrolled"
     [class.backdrop-blur-md]="isScrolled" [class.shadow-lg]="isScrolled" [class.border-b]="isScrolled"
-    [class.border-gray-200/50]="isScrolled" [class.bg-transparent]="!isScrolled">
+    [class.border-gray-200/50]="isScrolled" [class.bg-white]="!isScrolled">
 
     <!-- Navigation principale -->
     <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,12 +132,12 @@
             <!-- Boutons d'action desktop -->
             <div class="hidden lg:flex items-center space-x-4">
                 <button
-                    class="text-gray-700 hover:text-blue-600 font-medium px-4 py-2 rounded-lg hover:bg-blue-50 transition-all duration-200">
+                    class="text-gray-700 cursor-pointer hover:text-blue-600 font-medium px-4 py-2 rounded-lg hover:bg-blue-50 transition-all duration-200">
                     Connexion
                 </button>
 
                 <button
-                    class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    class="bg-gradient-to-r cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     Essai gratuit
                 </button>
             </div>

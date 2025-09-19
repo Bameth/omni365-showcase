@@ -16,10 +16,15 @@ export const routes: Routes = [
     },
     {
         path: 'tarifs',
-        component:PricingPage
+        component: PricingPage
+    },
+    {
+        path: 'not-found',
+        component: NotFoundPage
     },
     {
         path: '**',
-        component: NotFoundPage
+        redirectTo: '/not-found',
+        pathMatch: 'full'
     },
 ];

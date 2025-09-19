@@ -1,8 +1,12 @@
+@if (showHeaderFooter) {
 <app-header></app-header>
+}
 
-<div class="overflow-x-hidden pt-30 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+<div class="overflow-x-hidden pt-25 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
 
+@if (showHeaderFooter) {
 <app-footer></app-footer>
+}
