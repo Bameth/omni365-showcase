@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npx serve -p 8080 omni365-showcase/browser",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,7 +20,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^20.1.4",
     "@angular/common": "^20.1.0",
     "@angular/compiler": "^20.1.0",
     "@angular/core": "^20.1.0",
@@ -40,6 +39,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular/cli": "^20.1.4",
     "@angular/build": "^20.1.4",
     "@angular/compiler-cli": "^20.1.0",
     "@types/jasmine": "~5.1.0",
