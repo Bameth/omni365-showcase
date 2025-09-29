@@ -25,12 +25,17 @@ pipeline {
             }
                     
         }
-        stage('Deploy to openshift') {
+        // stage('Deploy to openshift') {
+        //     steps {
+        //         sh 'oc project $OPENSHIFT_PROJECT'
+        //         // sh 'oc delete all,imagestream,buildconfig -l app=omni-app'
+        //         sh 'oc delete all -l app=omni-app || true'
+        //         sh 'oc new-app openshift/nodejs:22-ubi8~https://github.com/Bameth/omni365-showcase.git --name=omni-app'
+        //     }
+        // }
+        stage('update') {
             steps {
-                sh 'oc project $OPENSHIFT_PROJECT'
-                // sh 'oc delete all,imagestream,buildconfig -l app=omni-app'
-                sh 'oc delete all -l app=omni-app || true'
-                sh 'oc new-app openshift/nodejs:22-ubi8~https://github.com/Bameth/omni365-showcase.git --name=omni-app'
+                sh 'oc start-build guest-platform'
             }
         }
     }
