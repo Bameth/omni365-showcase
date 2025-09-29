@@ -35,7 +35,7 @@ pipeline {
         // }
         stage('update') {
             steps {
-                sh 'oc start-build guest-platform'
+                sh 'oc start-build omni-app'
             }
         }
     }
