@@ -22,7 +22,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
@@ -61,6 +63,10 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
+            "host": "0.0.0.0",
+            "allowedHosts": [
+              "bad73f698174.ngrok-free.app"
+            ],
             "buildTarget": "omni365-showcase:build",
             "proxyConfig": "proxy.conf.mjs"
           },

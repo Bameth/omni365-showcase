@@ -15,7 +15,7 @@ import { filter } from 'rxjs';
 export class App implements OnInit {
   showHeaderFooter = true;
 
-  protected readonly title = signal('omni365-showcase');
+  protected readonly title = signal('omni365');
 
   private readonly faIconLibrary = inject(FaIconLibrary);
 
