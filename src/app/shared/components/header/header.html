@@ -1,128 +1,446 @@
-<!-- header.component.html - Thème Omni365 Adapté -->
-<header class="fixed top-0 w-full z-50 bg-white shadow-md border-b border-gray-200 transition-all duration-300" 
-    [class.shadow-lg]="isScrolled" [class.shadow-none]="!isScrolled">
+<!-- header.component.html - Version Professionnelle et Magnifique -->
+<header
+  class="fixed top-0 w-full z-50 transition-all duration-500"
+  [ngClass]="{
+    'bg-white/95 backdrop-blur-xl shadow-xl border-b border-orange-100':
+      isScrolled,
+    'bg-transparent': !isScrolled
+  }"
+>
+  <!-- Barre supérieure informative (visible uniquement sur desktop) -->
+  <!-- <div
+    class="hidden lg:block bg-gradient-to-r from-orange-600 to-red-600 text-white py-2 text-sm"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path>
+              <path
+                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path>
+            </svg>
+            <span>contact@omni365.sn</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+              ></path>
+            </svg>
+            <span>+221 33 XXX XX XX</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-2 font-semibold">
+            <span
+              class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+            ></span>
+            🇸🇳 Hébergement local | Livraison 24h
+          </span>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
-    <!-- Navigation principale -->
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 lg:h-20">
+  <!-- Navigation principale -->
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo et branding - Amélioré -->
+      <div
+        class="flex items-center space-x-2 sm:space-x-3 cursor-pointer group"
+        (click)="onLogoClick()"
+      >
+        <div class="relative">
+          <!-- Logo avec effet de glow -->
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-red-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div
+            class="relative bg-gradient-to-br from-orange-50 to-red-50 p-2 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 border border-orange-100"
+          >
+            <img
+              src="assets/171-131-max.png"
+              alt="Logo Omni365"
+              class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+            />
+          </div>
+        </div>
+        <div routerLink="/" class="flex flex-col">
+          <span
+            class="text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-[#F15A28] via-orange-500 to-red-600 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-wide"
+          >
+            Omni365
+          </span>
+          <span
+            class="text-xs text-gray-600 -mt-0.5 hidden sm:block font-semibold group-hover:text-orange-600 transition-colors duration-300"
+          >
+            Suite Collaborative Pro
+          </span>
+        </div>
+      </div>
 
-            <!-- Logo et branding -->
-            <div class="flex items-center space-x-3 cursor-pointer group logo-container" (click)="onLogoClick()">
-                <div class="relative logo-icon">
-                    <img src="assets/heritage-removebg-preview.png" 
-                         alt="Logo Omni365"
-                         class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl shadow-lg transition-all duration-300">
-                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-[#F15A28]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div routerLink="/" class="flex flex-col">
-                    <span class="text-xl lg:text-2xl font-bold bg-gradient-to-r from-[#F15A28] via-[#F15A28]/90 to-[#F15A28]/70 bg-clip-text text-transparent logo-text transition-all duration-300">
-                        Omni365
-                    </span>
-                    <span class="text-xs text-gray-500 -mt-1 hidden sm:block group-hover:text-[#F15A28] transition-colors duration-300">
-                        Suite Productive
-                    </span>
-                </div>
+      <!-- Navigation desktop - Améliorée -->
+      <div class="hidden lg:flex items-center space-x-1">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-orange-600 transition-all duration-300"
+        >
+          <span class="relative z-10">Solutions</span>
+          <div
+            class="absolute inset-0 bg-orange-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-600 to-red-600 group-hover:w-full transition-all duration-300"
+          ></div>
+        </a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-orange-600 transition-all duration-300"
+        >
+          <span class="relative z-10">Tarifs</span>
+          <div
+            class="absolute inset-0 bg-orange-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-600 to-red-600 group-hover:w-full transition-all duration-300"
+          ></div>
+        </a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-orange-600 transition-all duration-300"
+        >
+          <span class="relative z-10">Ressources</span>
+          <div
+            class="absolute inset-0 bg-orange-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-600 to-red-600 group-hover:w-full transition-all duration-300"
+          ></div>
+        </a>
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          class="relative group px-4 py-2 text-sm font-semibold text-gray-700 hover:text-orange-600 transition-all duration-300"
+        >
+          <span class="relative z-10">Contact</span>
+          <div
+            class="absolute inset-0 bg-orange-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-600 to-red-600 group-hover:w-full transition-all duration-300"
+          ></div>
+        </a>
+      </div>
+
+      <!-- Boutons desktop - Améliorés -->
+      <!-- <div class="hidden lg:flex items-center space-x-3">
+        <button
+          class="group relative px-5 py-2.5 text-sm font-bold text-gray-700 hover:text-orange-600 rounded-xl border-2 border-transparent hover:border-orange-200 hover:bg-orange-50 transition-all duration-300"
+        >
+          <span class="flex items-center gap-2">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            Connexion
+          </span>
+        </button>
+
+        <button
+          class="group relative overflow-hidden px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 rounded-xl shadow-lg hover:shadow-xl hover:shadow-orange-500/50 transform hover:-translate-y-0.5 transition-all duration-300"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <span class="relative flex items-center gap-2">
+            <svg
+              class="w-4 h-4 animate-pulse"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+            Essai gratuit
+            <svg
+              class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div> -->
+
+      <!-- Menu mobile button - Amélioré -->
+      <div class="lg:hidden">
+        <button
+          title="menu"
+          (click)="toggleMobileMenu()"
+          class="relative p-2.5 rounded-xl bg-gradient-to-br from-orange-50 to-red-50 text-orange-600 hover:from-orange-100 hover:to-red-100 border border-orange-200 shadow-md hover:shadow-lg transition-all duration-300"
+          [class.rotate-90]="isMobileMenuOpen"
+        >
+          <svg
+            class="w-6 h-6 transition-transform duration-300"
+            [class.rotate-180]="isMobileMenuOpen"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              [attr.d]="
+                isMobileMenuOpen
+                  ? 'M6 18L18 6M6 6l12 12'
+                  : 'M4 6h16M4 12h16M4 18h16'
+              "
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile déroulant - Amélioré -->
+    <div
+      class="lg:hidden overflow-hidden transition-all duration-500 ease-in-out"
+      [class.max-h-screen]="isMobileMenuOpen"
+      [class.max-h-0]="!isMobileMenuOpen"
+      [class.opacity-100]="isMobileMenuOpen"
+      [class.opacity-0]="!isMobileMenuOpen"
+    >
+      <div
+        class="px-3 pt-3 pb-6 space-y-2 bg-gradient-to-br from-white via-orange-50/30 to-red-50/30 backdrop-blur-xl rounded-2xl shadow-2xl border border-orange-100 mt-3 mx-2"
+      >
+        <!-- Info bar mobile -->
+        <div
+          class="mb-4 p-3 bg-gradient-to-r from-orange-600 to-red-600 rounded-xl text-white text-xs"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span
+                class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+              ></span>
+              <span class="font-semibold">Support 24/7</span>
             </div>
-
-            <!-- Navigation desktop -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a routerLink="/fonctions"
-                   class="nav-link text-gray-700 hover:text-[#F15A28] font-medium py-2 px-1">
-                    Fonctions
-                </a>
-                <a routerLink="/solutions"
-                   class="nav-link text-gray-700 hover:text-[#F15A28] font-medium py-2 px-1">
-                    Solutions
-                </a>
-                <a routerLink="/tarifs"
-                   class="nav-link text-gray-700 hover:text-[#F15A28] font-medium py-2 px-1">
-                    Tarifs
-                </a>
-                <a routerLink="/a-propos"
-                   class="nav-link text-gray-700 hover:text-[#F15A28] font-medium py-2 px-1">
-                    À propos
-                </a>
-                <a routerLink="/contact"
-                   class="nav-link text-gray-700 hover:text-[#F15A28] font-medium py-2 px-1">
-                    Contact
-                </a>
-            </div>
-
-            <!-- Boutons desktop -->
-            <div class="hidden lg:flex items-center space-x-4">
-                <button class="login-button text-gray-700 hover:text-[#F15A28] font-medium px-5 py-2 rounded-lg transition-all duration-200">
-                    Connexion
-                </button>
-                <button class="cta-button text-white font-medium px-6 py-2.5 rounded-lg shadow-lg transform transition-all duration-200">
-                    Essai gratuit
-                </button>
-            </div>
-
-            <!-- Menu mobile button -->
-            <div class="lg:hidden">
-                <button title="menu" 
-                        (click)="toggleMobileMenu()"
-                        class="hamburger-btn p-2 rounded-lg text-gray-700 hover:text-[#F15A28] transition-all duration-200"
-                        [class.active]="isMobileMenuOpen">
-                    <svg class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"></path>
-                    </svg>
-                </button>
-            </div>
+            <span class="font-bold">🇸🇳 Local</span>
+          </div>
         </div>
 
-        <!-- Menu mobile déroulant -->
-        <div class="lg:hidden mobile-menu transition-all duration-300 ease-in-out overflow-hidden"
-             [class.open]="isMobileMenuOpen"
-             [class.max-h-screen]="isMobileMenuOpen" 
-             [class.max-h-0]="!isMobileMenuOpen"
-             [class.opacity-100]="isMobileMenuOpen" 
-             [class.opacity-0]="!isMobileMenuOpen">
+        <a
+          routerLink="/"
+          (click)="closeMobileMenu()"
+          class="group flex items-center justify-between px-4 py-3.5 text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-xl font-semibold transition-all duration-300 border-2 border-transparent hover:border-orange-200"
+        >
+          <span class="flex items-center gap-3">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              ></path>
+            </svg>
+            Solutions
+          </span>
+          <svg
+            class="w-5 h-5 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </a>
 
-            <div class="px-2 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md rounded-b-2xl shadow-lg border-t border-gray-200/50 mt-2">
+        <a
+          routerLink="/"
+          (click)="closeMobileMenu()"
+          class="group flex items-center justify-between px-4 py-3.5 text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-xl font-semibold transition-all duration-300 border-2 border-transparent hover:border-orange-200"
+        >
+          <span class="flex items-center gap-3">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            Tarifs
+          </span>
+          <svg
+            class="w-5 h-5 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </a>
 
-                <a routerLink="/fonctions" 
-                   (click)="closeMobileMenu()"
-                   class="mobile-menu-item block px-4 py-3 text-gray-700 hover:text-[#F15A28] hover:bg-[#F15A28]/10 rounded-lg font-medium transition-all duration-200">
-                    Fonctions
-                </a>
+        <a
+          routerLink="/"
+          (click)="closeMobileMenu()"
+          class="group flex items-center justify-between px-4 py-3.5 text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-xl font-semibold transition-all duration-300 border-2 border-transparent hover:border-orange-200"
+        >
+          <span class="flex items-center gap-3">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            Ressources
+          </span>
+          <svg
+            class="w-5 h-5 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </a>
 
-                <a routerLink="/solutions" 
-                   (click)="closeMobileMenu()"
-                   class="mobile-menu-item block px-4 py-3 text-gray-700 hover:text-[#F15A28] hover:bg-[#F15A28]/10 rounded-lg font-medium transition-all duration-200">
-                    Solutions
-                </a>
+        <a
+          routerLink="/contact"
+          (click)="closeMobileMenu()"
+          class="group flex items-center justify-between px-4 py-3.5 text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-xl font-semibold transition-all duration-300 border-2 border-transparent hover:border-orange-200"
+        >
+          <span class="flex items-center gap-3">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            Contact
+          </span>
+          <svg
+            class="w-5 h-5 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </a>
 
-                <a routerLink="/tarifs" 
-                   (click)="closeMobileMenu()"
-                   class="mobile-menu-item block px-4 py-3 text-gray-700 hover:text-[#F15A28] hover:bg-[#F15A28]/10 rounded-lg font-medium transition-all duration-200">
-                    Tarifs
-                </a>
+        <!-- Boutons mobile - Améliorés -->
+        <div class="pt-4 space-y-3 border-t-2 border-orange-200 mt-4">
+          <button
+            class="w-full flex items-center justify-center gap-2 px-5 py-3.5 text-gray-700 hover:text-orange-600 font-bold rounded-xl border-2 border-gray-300 hover:border-orange-600 hover:bg-orange-50 transition-all duration-300 shadow-md hover:shadow-lg"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            Connexion
+          </button>
 
-                <a routerLink="/a-propos" 
-                   (click)="closeMobileMenu()"
-                   class="mobile-menu-item block px-4 py-3 text-gray-700 hover:text-[#F15A28] hover:bg-[#F15A28]/10 rounded-lg font-medium transition-all duration-200">
-                    À propos
-                </a>
-
-                <a routerLink="/contact" 
-                   (click)="closeMobileMenu()"
-                   class="mobile-menu-item block px-4 py-3 text-gray-700 hover:text-[#F15A28] hover:bg-[#F15A28]/10 rounded-lg font-medium transition-all duration-200">
-                    Contact
-                </a>
-
-                <!-- Boutons mobile -->
-                <div class="pt-4 space-y-3 border-t border-gray-200">
-                    <button class="mobile-menu-item w-full login-button text-gray-700 hover:text-[#F15A28] font-medium px-4 py-3 rounded-lg transition-all duration-200 text-center">
-                        Connexion
-                    </button>
-                    <button class="mobile-menu-item w-full cta-button text-white font-medium px-6 py-3 rounded-lg shadow-lg">
-                        Essai gratuit
-                    </button>
-                </div>
-
-            </div>
+          <button
+            class="w-full relative overflow-hidden flex items-center justify-center gap-2 px-5 py-3.5 text-white font-bold bg-gradient-to-r from-orange-600 to-red-600 rounded-xl shadow-xl hover:shadow-2xl hover:shadow-orange-500/50 transform hover:-translate-y-0.5 transition-all duration-300"
+          >
+            <svg
+              class="w-5 h-5 animate-pulse"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+            <span>Essai gratuit - 14 jours</span>
+          </button>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </header>
