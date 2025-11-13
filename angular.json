@@ -17,6 +17,9 @@
             "polyfills": [
               "zone.js"
             ],
+            "allowedCommonJsDependencies": [
+              "lottie-web"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
