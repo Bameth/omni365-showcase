@@ -1,0 +1,686 @@
+<!-- ressources.component.html - Page Ressources Omni365 -->
+<section
+  class="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50/30 relative overflow-hidden"
+>
+  <!-- Effets d'arrière-plan -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-1/4 right-1/4 w-64 h-64 lg:w-96 lg:h-96 bg-gradient-to-r from-orange-400/20 to-red-400/15 rounded-full blur-3xl animate-pulse"
+    ></div>
+    <div
+      class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-l from-red-400/15 to-orange-400/10 rounded-full blur-3xl animate-pulse"
+      style="animation-delay: -3s"
+    ></div>
+  </div>
+
+  <div
+    class="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20"
+  >
+    <!-- En-tête -->
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <div
+        class="inline-flex items-center px-4 py-2 bg-orange-100 rounded-full text-sm font-bold text-orange-700 mb-4 sm:mb-6 shadow-lg"
+      >
+        <span
+          class="w-2 h-2 bg-orange-600 rounded-full mr-2 animate-pulse"
+        ></span>
+        Documentation & Guides
+      </div>
+
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight"
+      >
+        <span class="block text-gray-900 mb-2">Centre de</span>
+        <span
+          class="block bg-gradient-to-r from-[#F15A28] via-orange-500 to-red-600 bg-clip-text text-transparent"
+        >
+          Ressources
+        </span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
+        Tout ce dont vous avez besoin pour maîtriser Omni365 et maximiser votre
+        productivité
+      </p>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="max-w-2xl mx-auto mb-12 sm:mb-16">
+      <div class="relative group">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative flex items-center bg-white/90 backdrop-blur-xl rounded-2xl border border-orange-100 shadow-xl overflow-hidden"
+        >
+          <svg
+            class="w-6 h-6 text-gray-400 ml-5 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+          <input
+            type="text"
+            placeholder="Rechercher dans les ressources..."
+            class="flex-1 px-5 py-4 bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none text-base"
+          />
+          <button
+            class="m-2 px-6 py-2.5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
+          >
+            Rechercher
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catégories de ressources -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 sm:mb-20"
+    >
+      <!-- Documentation -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+            Documentation
+          </h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Guides détaillés et tutoriels pour chaque fonctionnalité
+          </p>
+          <div
+            class="flex items-center text-sm text-blue-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            Explorer
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            📚 +50 articles • ⏱️ Mis à jour quotidiennement
+          </div>
+        </div>
+      </div>
+
+      <!-- API Documentation -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-600 to-purple-400 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">API</h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Documentation complète de notre API RESTful
+          </p>
+          <div
+            class="flex items-center text-sm text-purple-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            Accéder à l'API
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            🔌 REST API • 🔐 OAuth 2.0 • 📊 Webhooks
+          </div>
+        </div>
+      </div>
+
+      <!-- Vidéos & Tutoriels -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-red-600 to-red-400 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+            Vidéos
+          </h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Tutoriels vidéo étape par étape pour débuter
+          </p>
+          <div
+            class="flex items-center text-sm text-red-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            Voir les vidéos
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            🎬 +30 vidéos • 🎯 Niveau débutant à expert
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog & Actualités -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-green-600 to-green-400 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+            Blog
+          </h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Articles, conseils et actualités du monde Omni365
+          </p>
+          <div
+            class="flex items-center text-sm text-green-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            Lire le blog
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            ✍️ Nouveaux articles chaque semaine
+          </div>
+        </div>
+      </div>
+
+      <!-- Webinaires -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+            Webinaires
+          </h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Sessions live avec nos experts produits
+          </p>
+          <div
+            class="flex items-center text-sm text-orange-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            S'inscrire
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            📅 Prochain webinaire : 15 Nov 2024
+          </div>
+        </div>
+      </div>
+
+      <!-- Téléchargements -->
+      <div class="group relative">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-orange-100 hover:shadow-2xl transition-all duration-500 h-full cursor-pointer"
+        >
+          <div
+            class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-600 to-indigo-400 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+          >
+            <svg
+              class="w-7 h-7 sm:w-8 sm:h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+            Téléchargements
+          </h3>
+          <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed">
+            Applications mobiles, templates et ressources
+          </p>
+          <div
+            class="flex items-center text-sm text-indigo-600 font-bold group-hover:translate-x-2 transition-transform"
+          >
+            Télécharger
+            <svg
+              class="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              ></path>
+            </svg>
+          </div>
+          <div class="mt-5 pt-5 border-t border-gray-200 text-xs text-gray-600">
+            📱 iOS • Android • Windows • Mac
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Articles populaires -->
+    <div class="max-w-6xl mx-auto mb-16 sm:mb-20">
+      <div class="flex items-center justify-between mb-8 sm:mb-10">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900">
+          Articles populaires
+        </h2>
+        <a
+          href="#"
+          class="hidden sm:flex items-center text-base font-bold text-orange-600 hover:text-orange-700 transition-colors group"
+        >
+          Voir tout
+          <svg
+            class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            ></path>
+          </svg>
+        </a>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+      >
+        <!-- Article 1 -->
+        <article
+          class="group bg-white/90 backdrop-blur-xl rounded-2xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+        >
+          <div
+            class="h-48 bg-gradient-to-br from-orange-400 to-red-400 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+            ></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg
+                class="w-16 h-16 text-white/80"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span
+                class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold"
+                >Guide</span
+              >
+              <span class="text-xs text-gray-500">5 min de lecture</span>
+            </div>
+            <h3
+              class="text-lg font-black text-gray-900 mb-2 group-hover:text-orange-600 transition-colors"
+            >
+              Démarrer avec Omni365 en 5 étapes
+            </h3>
+            <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+              Guide complet pour configurer votre espace de travail et commencer
+              à collaborer efficacement.
+            </p>
+            <div class="flex items-center text-sm font-bold text-orange-600">
+              Lire l'article
+              <svg
+                class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article
+          class="group bg-white/90 backdrop-blur-xl rounded-2xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+        >
+          <div
+            class="h-48 bg-gradient-to-br from-blue-400 to-indigo-400 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+            ></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg
+                class="w-16 h-16 text-white/80"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span
+                class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold"
+                >Sécurité</span
+              >
+              <span class="text-xs text-gray-500">8 min de lecture</span>
+            </div>
+            <h3
+              class="text-lg font-black text-gray-900 mb-2 group-hover:text-orange-600 transition-colors"
+            >
+              Meilleures pratiques de sécurité
+            </h3>
+            <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+              Découvrez comment protéger vos données et sécuriser votre compte
+              Omni365 efficacement.
+            </p>
+            <div class="flex items-center text-sm font-bold text-orange-600">
+              Lire l'article
+              <svg
+                class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article
+          class="group bg-white/90 backdrop-blur-xl rounded-2xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+        >
+          <div
+            class="h-48 bg-gradient-to-br from-green-400 to-emerald-400 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+            ></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg
+                class="w-16 h-16 text-white/80"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span
+                class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold"
+                >Astuces</span
+              >
+              <span class="text-xs text-gray-500">6 min de lecture</span>
+            </div>
+            <h3
+              class="text-lg font-black text-gray-900 mb-2 group-hover:text-orange-600 transition-colors"
+            >
+              10 raccourcis pour gagner du temps
+            </h3>
+            <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+              Augmentez votre productivité avec ces raccourcis clavier et
+              astuces peu connues.
+            </p>
+            <div class="flex items-center text-sm font-bold text-orange-600">
+              Lire l'article
+              <svg
+                class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="max-w-4xl mx-auto">
+      <div class="relative group">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500"
+        ></div>
+        <div
+          class="relative bg-gradient-to-br from-orange-600 via-orange-500 to-red-600 rounded-3xl p-8 sm:p-10 md:p-12 text-center shadow-2xl"
+        >
+          <h3
+            class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4"
+          >
+            Vous ne trouvez pas ce que vous cherchez ?
+          </h3>
+          <p
+            class="text-base sm:text-lg text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto"
+          >
+            Contactez notre équipe support qui se fera un plaisir de vous aider
+            à trouver les bonnes ressources.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <button
+              routerLink="/support"
+              class="inline-flex items-center px-8 py-4 bg-white text-orange-600 font-bold rounded-2xl hover:shadow-lg transition-all"
+            >
+              Contacter le support
+              <svg
+                class="w-5 h-5 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

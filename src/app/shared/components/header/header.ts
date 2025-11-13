@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule, FontAwesomeModule],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
@@ -30,7 +31,7 @@ export class Header implements OnInit {
   }
 
   onLogoClick(): void {
-    // Animation du logo au clic
-    console.log('Logo clicked');
+    this.closeMobileMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
