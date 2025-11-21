@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-header',
   imports: [RouterModule, CommonModule, FontAwesomeModule],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
 })
 export class Header implements OnInit {
   isScrolled = false;
@@ -29,7 +29,15 @@ export class Header implements OnInit {
   closeMobileMenu(): void {
     this.isMobileMenuOpen = false;
   }
-
+  scrollToTarifs() {
+    const element = document.getElementById('tarifs');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
   onLogoClick(): void {
     this.closeMobileMenu();
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -7,6 +7,7 @@ import { ThankYou } from './features/thankyou/thankyou';
 import { Ressource } from './features/ressource/ressource';
 import { Support } from './features/support/support';
 import { PricingPage } from './features/pricing-page/pricing-page';
+import { ContactPageSurMesure } from './features/contact-surmesure/contact-pageSurMesure';
 
 export const routes: Routes = [
   {
@@ -16,8 +17,10 @@ export const routes: Routes = [
       { path: '', component: LandingPage },
       { path: 'not-found', component: NotFoundComponent },
       { path: 'contact', component: ContactPage },
+      { path: 'contact', component: ContactPage },
       { path: 'ressources', component: Ressource },
       { path: 'tarifs', component: PricingPage },
+      { path: 'contact/surmesure', component: ContactPageSurMesure },
       { path: 'support', component: Support },
       { path: 'merci', component: ThankYou },
     ],
