@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, CommonModule, FontAwesomeModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
