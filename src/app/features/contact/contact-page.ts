@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import {
+  ContactData,
+  OmniApiService,
+} from '../../core/services/omni-api.service';
 
 interface Account {
   id: number;
@@ -17,76 +24,49 @@ interface Notification {
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
+  providers: [OmniApiService],
   templateUrl: './contact-page.html',
   styleUrl: './contact-page.css',
 })
-export class ContactPage {
-  // Données du formulaire
-  companyName: string = '';
-  domainName: string = '';
-  accountCount: number = 1;
-  phone: string = '';
-  contactEmail: string = '';
-  fullName: string = '';
+export class ContactPage implements OnDestroy {
+  // Données du formulaire principal
+  companyName = '';
+  domainName = '';
+  accountCount = 1;
+  phone = '';
+  contactEmail = '';
+  fullName = '';
+  message = 'Contact pour création de compte Omni';
 
   // Liste des comptes
   accounts: Account[] = [];
-  newAccountEmail: string = '';
-  nextAccountId: number = 1;
+  newAccountEmail = '';
+  private nextAccountId = 1;
 
   // État du formulaire
-  showPaymentModal: boolean = false;
-  isProcessing: boolean = false;
-
-  // Données de paiement
-  cardNumber: string = '';
-  cardName: string = '';
-  expiryDate: string = '';
-  cvv: string = '';
-
-  // Validation
-  formErrors: any = {};
+  isSubmitting = false;
+  formErrors: { [key: string]: string } = {};
 
   // Système de notifications
   notifications: Notification[] = [];
-  nextNotificationId: number = 1;
+  private nextNotificationId = 1;
+  private readonly destroy$ = new Subject<void>();
 
-  constructor() {}
+  constructor(
+    private readonly apiService: OmniApiService,
+    private readonly router: Router
+  ) {}
 
-  // Système de notifications
-  showNotification(
-    type: 'success' | 'error' | 'warning' | 'info',
-    message: string
-  ) {
-    const notification: Notification = {
-      id: this.nextNotificationId++,
-      type,
-      message,
-      show: true,
-    };
-
-    this.notifications.push(notification);
-
-    // Auto-fermeture après 5 secondes
-    setTimeout(() => {
-      this.closeNotification(notification.id);
-    }, 5000);
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  closeNotification(id: number) {
-    const notification = this.notifications.find((n) => n.id === id);
-    if (notification) {
-      notification.show = false;
-      // Supprimer complètement après l'animation
-      setTimeout(() => {
-        this.notifications = this.notifications.filter((n) => n.id !== id);
-      }, 300);
-    }
-  }
-
-  // Ajouter un compte à la liste
-  addAccount() {
+  /**
+   * Ajouter un compte à la liste
+   */
+  addAccount(): void {
     const email = this.newAccountEmail.trim();
 
     if (!email) {
@@ -95,8 +75,7 @@ export class ContactPage {
     }
 
     // Validation email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!this.isValidEmail(email)) {
       this.showNotification(
         'error',
         'Veuillez entrer une adresse email valide'
@@ -122,58 +101,83 @@ export class ContactPage {
     this.showNotification('success', 'Compte ajouté avec succès');
   }
 
-  // Supprimer un compte de la liste
-  removeAccount(id: number) {
+  /**
+   * Supprimer un compte de la liste
+   */
+  removeAccount(id: number): void {
     this.accounts = this.accounts.filter((acc) => acc.id !== id);
     this.showNotification('info', 'Compte supprimé');
   }
 
-  // Valider le formulaire principal
-  validateForm(): boolean {
+  /**
+   * Validation email
+   */
+  private isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  /**
+   * Validation du formulaire
+   */
+  private validateForm(): boolean {
     this.formErrors = {};
     let isValid = true;
 
+    // Nom complet
+    if (!this.fullName.trim()) {
+      this.formErrors['fullName'] = 'Le nom complet est requis';
+      isValid = false;
+    }
+
+    // Email de contact
+    if (!this.contactEmail.trim()) {
+      this.formErrors['contactEmail'] = "L'email de contact est requis";
+      isValid = false;
+    } else if (!this.isValidEmail(this.contactEmail)) {
+      this.formErrors['contactEmail'] = "L'email n'est pas valide";
+      isValid = false;
+    }
+
+    // Téléphone
+    if (!this.phone.trim()) {
+      this.formErrors['phone'] = 'Le téléphone est requis';
+      isValid = false;
+    }
+
+    // Nom entreprise
     if (!this.companyName.trim()) {
-      this.formErrors.companyName = "Le nom de l'entreprise est requis";
+      this.formErrors['companyName'] = "Le nom de l'entreprise est requis";
       isValid = false;
     }
 
+    // Nom de domaine
     if (!this.domainName.trim()) {
-      this.formErrors.domainName = 'Le nom de domaine est requis';
+      this.formErrors['domainName'] = 'Le nom de domaine est requis';
       isValid = false;
     }
 
+    // Nombre de comptes
     if (this.accountCount < 1) {
-      this.formErrors.accountCount =
+      this.formErrors['accountCount'] =
         'Le nombre de comptes doit être au moins 1';
       isValid = false;
     }
 
-    if (!this.phone.trim()) {
-      this.formErrors.phone = 'Le téléphone est requis';
-      isValid = false;
-    }
-
-    if (!this.contactEmail.trim()) {
-      this.formErrors.contactEmail = "L'email de contact est requis";
-      isValid = false;
-    }
-
-    if (!this.fullName.trim()) {
-      this.formErrors.fullName = 'Le nom complet est requis';
-      isValid = false;
-    }
-
+    // Liste des comptes
     if (this.accounts.length === 0) {
-      this.formErrors.accounts = 'Veuillez ajouter au moins un compte';
+      this.formErrors['accounts'] = 'Veuillez ajouter au moins un compte';
       isValid = false;
     }
 
     return isValid;
   }
 
-  // Soumettre le formulaire principal
-  submitForm() {
+  /**
+   * Soumettre le formulaire
+   */
+  submitForm(form: NgForm): void {
+    // Valider le formulaire
     if (!this.validateForm()) {
       this.showNotification(
         'error',
@@ -182,105 +186,118 @@ export class ContactPage {
       return;
     }
 
-    // Ouvrir le modal de paiement
-    this.showPaymentModal = true;
-  }
-
-  // Fermer le modal de paiement
-  closePaymentModal() {
-    this.showPaymentModal = false;
-    this.resetPaymentForm();
-  }
-
-  // Réinitialiser le formulaire de paiement
-  resetPaymentForm() {
-    this.cardNumber = '';
-    this.cardName = '';
-    this.expiryDate = '';
-    this.cvv = '';
-  }
-
-  // Formater le numéro de carte
-  formatCardNumber(event: any) {
-    let value = event.target.value.replace(/\s/g, '');
-    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-    this.cardNumber = formattedValue;
-  }
-
-  // Formater la date d'expiration
-  formatExpiryDate(event: any) {
-    let value = event.target.value.replace(/\D/g, '');
-    if (value.length >= 2) {
-      value = value.slice(0, 2) + '/' + value.slice(2, 4);
-    }
-    this.expiryDate = value;
-  }
-
-  // Valider le paiement
-  validatePayment(): boolean {
-    if (!this.cardNumber.replace(/\s/g, '').match(/^\d{16}$/)) {
-      this.showNotification(
-        'error',
-        'Numéro de carte invalide (16 chiffres requis)'
-      );
-      return false;
-    }
-
-    if (!this.cardName.trim()) {
-      this.showNotification('error', 'Le nom sur la carte est requis');
-      return false;
-    }
-
-    if (!this.expiryDate.match(/^\d{2}\/\d{2}$/)) {
-      this.showNotification(
-        'error',
-        "Date d'expiration invalide (format MM/AA)"
-      );
-      return false;
-    }
-
-    if (!this.cvv.match(/^\d{3}$/)) {
-      this.showNotification('error', 'CVV invalide (3 chiffres requis)');
-      return false;
-    }
-
-    return true;
-  }
-
-  // Soumettre le paiement
-  async submitPayment() {
-    if (!this.validatePayment()) {
+    // Empêcher les doubles soumissions
+    if (this.isSubmitting) {
       return;
     }
 
-    this.isProcessing = true;
+    this.isSubmitting = true;
 
-    // Simuler un traitement de paiement
-    setTimeout(() => {
-      this.isProcessing = false;
-      this.closePaymentModal();
+    // Préparer les données
+    const contactData: ContactData = {
+      fullName: this.fullName,
+      email: this.contactEmail,
+      phoneNumber: this.phone,
+      enterpriseName: this.companyName,
+      domainName: this.domainName,
+      accountNumber: this.accountCount,
+      accountList: this.accounts.map((acc) => acc.email).join(', '),
+      message: this.message || '',
+    };
 
-      // Afficher un message de succès
-      this.showNotification(
-        'success',
-        '🎉 Paiement effectué avec succès ! Vous recevrez vos accès sous 24h par email.'
-      );
+    // Appel API
+    this.apiService
+      .submitContact(contactData)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response) => {
+          this.isSubmitting = false;
+          this.showNotification(
+            'success',
+            '🎉 Votre commande a été envoyée avec succès ! Redirection...'
+          );
 
-      // Réinitialiser le formulaire
-      this.resetForm();
-    }, 2000);
+          // Réinitialiser le formulaire
+          this.resetForm(form);
+
+          // Rediriger vers la page de remerciement après 1.5 secondes
+          setTimeout(() => {
+            this.router.navigate(['/merci']);
+          }, 1500);
+        },
+        error: (error) => {
+          this.isSubmitting = false;
+          this.showNotification(
+            'error',
+            error.message || 'Une erreur est survenue. Veuillez réessayer.'
+          );
+        },
+      });
   }
 
-  // Réinitialiser tout le formulaire
-  resetForm() {
+  /**
+   * Réinitialiser le formulaire
+   */
+  private resetForm(form: NgForm): void {
     this.companyName = '';
     this.domainName = '';
     this.accountCount = 1;
     this.phone = '';
     this.contactEmail = '';
     this.fullName = '';
+    this.message = '';
     this.accounts = [];
     this.newAccountEmail = '';
     this.formErrors = {};
+    form.resetForm();
+  }
+
+  /**
+   * Afficher une notification
+   */
+  showNotification(
+    type: 'success' | 'error' | 'warning' | 'info',
+    message: string
+  ): void {
+    const notification: Notification = {
+      id: this.nextNotificationId++,
+      type,
+      message,
+      show: true,
+    };
+
+    this.notifications.push(notification);
+
+    // Auto-fermeture après 5 secondes
+    setTimeout(() => {
+      this.closeNotification(notification.id);
+    }, 5000);
+  }
+
+  /**
+   * Fermer une notification
+   */
+  closeNotification(id: number): void {
+    const notification = this.notifications.find((n) => n.id === id);
+    if (notification) {
+      notification.show = false;
+      setTimeout(() => {
+        this.notifications = this.notifications.filter((n) => n.id !== id);
+      }, 300);
+    }
+  }
+
+  /**
+   * Vérifier si un champ a une erreur
+   */
+  hasError(fieldName: string): boolean {
+    return !!this.formErrors[fieldName];
+  }
+
+  /**
+   * Obtenir le message d'erreur d'un champ
+   */
+  getError(fieldName: string): string {
+    return this.formErrors[fieldName] || '';
   }
 }

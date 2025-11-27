@@ -8,6 +8,7 @@ import { Ressource } from './features/ressource/ressource';
 import { Support } from './features/support/support';
 import { PricingPage } from './features/pricing-page/pricing-page';
 import { ContactPageSurMesure } from './features/contact-surmesure/contact-pageSurMesure';
+import { ThankYouSurMesure } from './features/merci-surmesure/thankyou';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
       { path: 'contact/surmesure', component: ContactPageSurMesure },
       { path: 'support', component: Support },
       { path: 'merci', component: ThankYou },
+      { path: 'vous-serez-contacter', component: ThankYouSurMesure },
     ],
   },
   // Redirection pour toutes les routes non trouvées
