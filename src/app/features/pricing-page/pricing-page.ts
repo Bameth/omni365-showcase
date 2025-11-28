@@ -21,28 +21,35 @@ export class PricingPage implements OnInit {
       description: 'Moyennes équipes',
       highlight: 'Moyennes équipes',
       price: {
-        monthly: 250000,
-        yearly: 2700000,
+        // NOUVEAU COÛT MENSUEL : 137 475 FCFA
+        monthly: 137475,
+        // NOUVEAU COÛT ANNUEL (avec 10% de réduction) : 1 484 730 FCFA
+        yearly: 1484730,
       },
       originalPrice: {
-        monthly: 250000,
-        yearly: 3000000,
+        monthly: 137475,
+        // COÛT ANNUEL SANS RÉDUCTION : 1 649 700 FCFA
+        yearly: 1649700,
       },
       maxUsers: '25',
-      storage: '50 GO',
+      // NOUVEAU STOCKAGE : 1 TO
+      storage: '1 TO',
       support: '24/7',
       features: [
-        '25 comptes professionnels',
+        // NOUVELLE SOLUTION : Omni365
+        '25 comptes professionnels Solution Omni365',
         'Files + Chat + Calendrier',
+        // Mise à jour de la fonctionnalité de stockage
+        '1 TO de Stockage cloud sécurisé par utilisateur',
         'Support technique 24/7',
-        'Stockage cloud sécurisé',
         'Collaboration en temps réel',
         'Sécurité avancée',
       ],
       cta: 'Choisir ce pack',
       popular: true,
       enterprise: false,
-      pricePerAccount: '10 000 FCFA par compte',
+      // NOUVEAU COÛT PAR COMPTE : 5 499 FCFA par compte
+      pricePerAccount: '5 499 FCFA par compte',
     },
     {
       id: 'enterprise',
