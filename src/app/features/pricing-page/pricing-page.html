@@ -1,9 +1,7 @@
-<!-- Section Tarification - Style Omni365 Full Responsive -->
 <section
-  class="min-h-screen py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white via-orange-50/30 to-red-50/30">
-  <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-    <!-- En-tête -->
-    <div class="text-center max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+  class="min-h-screen py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white via-orange-50/30 to-red-50/30 flex flex-col justify-center">
+  <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 flex-grow">
+    <div class="text-center max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-16 lg:mb-20">
       <div
         class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-100 rounded-full text-xs sm:text-sm font-semibold text-orange-700 mb-3 sm:mb-4 md:mb-6">
         <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-600 rounded-full mr-1.5 sm:mr-2 animate-pulse"></span>
@@ -11,50 +9,45 @@
       </div>
 
       <h1
-        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-3 sm:mb-4 md:mb-6 leading-tight">
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 sm:mb-4 md:mb-6 leading-tight">
         <span class="text-gray-900">Des tarifs </span>
         <span class="text-orange-600">adaptés à l'Afrique</span>
       </h1>
 
-      <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8">
+      <p class="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-6 sm:mb-8">
         Choisissez la formule qui correspond à vos besoins. Paiement flexible,
         sans engagement.
       </p>
 
-      <!-- Toggle mensuel/annuel -->
       <div
         class="inline-flex items-center gap-3 sm:gap-4 bg-white/90 backdrop-blur-xl border-2 border-orange-100 rounded-2xl p-1.5 sm:p-2 shadow-xl">
         <button (click)="toggleBilling()" [class.bg-gradient-to-r]="!isYearly" [class.from-orange-600]="!isYearly"
           [class.to-red-600]="!isYearly" [class.text-white]="!isYearly" [class.text-gray-600]="isYearly"
-          class="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 text-xs sm:text-sm md:text-base">
+          class="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 text-sm sm:text-base">
           Mensuel
         </button>
         <button (click)="toggleBilling()" [class.bg-gradient-to-r]="isYearly" [class.from-orange-600]="isYearly"
           [class.to-red-600]="isYearly" [class.text-white]="isYearly" [class.text-gray-600]="!isYearly"
-          class="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2 text-xs sm:text-sm md:text-base">
+          class="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
           Annuel
-          <span class="text-[10px] sm:text-xs px-2 py-0.5 bg-green-500 text-white rounded-full font-bold">-10%</span>
+          <span
+            class="text-[10px] sm:text-xs px-2 py-0.5 bg-green-500 text-white rounded-full font-bold whitespace-nowrap">-10%</span>
         </button>
       </div>
     </div>
-
-    <!-- Grille des plans -->
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-5xl mx-auto mb-12 sm:mb-16 md:mb-20">
-      <div *ngFor="let plan of plans" class="relative w-full">
-        <!-- Effet de glow -->
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-6 lg:gap-8 max-w-7xl mx-auto mb-12 sm:mb-16 md:mb-20 items-stretch">
+      <div *ngFor="let plan of plans" class="relative w-full flex">
         <div [class]="
-            plan.popular
-              ? 'absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-3xl blur-xl opacity-30'
-              : 'absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 hover:opacity-40 transition duration-500'
-          "></div>
-        <!-- Carte du plan -->
+                            plan.popular
+                                ? 'absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-3xl blur-xl opacity-30'
+                                : 'absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl blur opacity-20 hover:opacity-40 transition duration-500'
+                        "></div>
         <div [class]="
-            plan.popular
-              ? 'relative bg-white backdrop-blur-xl border-2 border-orange-200 rounded-3xl p-5 sm:p-6 md:p-7 lg:p-8 hover:shadow-2xl transition-all duration-500 h-full flex flex-col transform scale-105'
-              : 'relative bg-white/90 backdrop-blur-xl border border-orange-100 rounded-2xl p-4 sm:p-5 md:p-6 lg:p-7 hover:shadow-2xl transition-all duration-500 h-full flex flex-col'
-          ">
-          <!-- En-tête du plan -->
+                            plan.popular
+                                ? 'relative bg-white backdrop-blur-xl border-2 border-orange-200 rounded-3xl p-5 sm:p-6 md:p-7 lg:p-8 hover:shadow-2xl transition-all duration-500 w-full flex flex-col'
+                                : 'relative bg-white/90 backdrop-blur-xl border border-orange-100 rounded-2xl p-4 sm:p-5 md:p-6 lg:p-7 hover:shadow-2xl transition-all duration-500 w-full flex flex-col'
+                        ">
           <div class="text-center mb-5 sm:mb-6 md:mb-7">
             <div
               class="inline-flex items-center px-2.5 sm:px-3 py-1 bg-orange-50 rounded-full text-xs sm:text-sm font-semibold text-orange-700 mb-3 sm:mb-4">
@@ -63,10 +56,6 @@
             <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1.5 sm:mb-2">
               {{ plan.name }}
             </h3>
-            <p class="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-5 md:mb-6">
-              {{ plan.description }}
-            </p>
-            <!-- Prix -->
             <div *ngIf="!plan.enterprise" class="mb-2 sm:mb-3">
               <div class="flex items-baseline justify-center gap-1 sm:gap-2">
                 <span class="text-3xl sm:text-4xl md:text-5xl font-black text-orange-600">
@@ -75,16 +64,13 @@
                 <span class="text-xs sm:text-sm text-gray-600">FCFA</span>
                 <span class="text-xs sm:text-sm text-gray-500">/{{ isYearly ? "an" : "mois" }}</span>
               </div>
-              <!-- Prix par compte -->
               <div class="text-xs sm:text-sm text-gray-500 mt-1">
                 {{ plan.pricePerAccount }}
               </div>
-              <!-- Prix barré si promo -->
               <div *ngIf="getOriginalPrice(plan) && isYearly"
                 class="text-xs sm:text-sm text-gray-500 line-through mt-1">
                 {{ getOriginalPrice(plan) | number : "1.0-0" }} FCFA/an
               </div>
-              <!-- Économie -->
               <div *ngIf="isYearly && calculateSavings(plan) > 0" class="mt-2">
                 <span
                   class="inline-flex items-center px-2 sm:px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">
@@ -92,7 +78,6 @@
                 </span>
               </div>
             </div>
-            <!-- Prix personnalisé -->
             <div *ngIf="plan.enterprise" class="mb-3 sm:mb-4">
               <div
                 class="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
@@ -103,7 +88,6 @@
               </p>
             </div>
           </div>
-          <!-- Liste des fonctionnalités -->
           <ul class="space-y-2 sm:space-y-2.5 md:space-y-3 mb-5 sm:mb-6 md:mb-7 flex-grow">
             <li *ngFor="let feature of plan.features" class="flex items-start text-xs sm:text-sm text-gray-700">
               <svg class="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="currentColor"
@@ -138,12 +122,11 @@
               <div class="text-[10px] sm:text-xs text-gray-500">Support</div>
             </div>
           </div>
-          <!-- Bouton CTA -->
           <button *ngIf="!plan.enterprise" routerLink="/contact" [class]="
-              plan.popular
-                ? 'w-full cursor-pointer bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-orange-500/50 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base'
-                : 'w-full cursor-pointer bg-white border-2 border-orange-600 hover:bg-orange-50 text-orange-600 font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base'
-            ">
+                                plan.popular
+                                    ? 'w-full cursor-pointer bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-orange-500/50 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm md:text-base'
+                                    : 'w-full cursor-pointer bg-white border-2 border-orange-600 hover:bg-orange-50 text-orange-600 font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm md:text-base'
+                            ">
             <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
               </path>
@@ -151,7 +134,7 @@
             {{ plan.cta }}
           </button>
           <button *ngIf="plan.enterprise" routerLink="/contact/surmesure"
-            class="w-full cursor-pointer bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-red-500/50 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base">
+            class="w-full cursor-pointer bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 sm:py-3.5 md:py-4 rounded-xl transition-all duration-300 shadow-2xl hover:shadow-red-500/50 transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm md:text-base">
             <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
@@ -162,37 +145,32 @@
         </div>
       </div>
     </div>
-
-    <!-- Message important -->
-    <div class="text-center mb-12 sm:mb-16 md:mb-20 px-4">
+    <div class="flex justify-center mb-12 sm:mb-16 md:mb-20 px-4">
       <div
-        class="inline-flex flex-col sm:flex-row items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-green-50 border-2 border-green-200 rounded-2xl max-w-4xl shadow-lg">
+        class="inline-flex flex-col sm:flex-row items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-green-50 border-2 border-green-200 rounded-2xl max-w-4xl shadow-lg text-center sm:text-left">
         <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd"
             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
             clip-rule="evenodd"></path>
         </svg>
-        <span class="text-xs sm:text-sm md:text-base font-bold text-green-800 text-center sm:text-left">
+        <span class="text-xs sm:text-sm md:text-base font-bold text-green-800">
           ✓ Paiement Mobile Money / Carte • ✓ Sans engagement • ✓ Livraison 24h
           • ✓ Support 24/7
         </span>
       </div>
     </div>
-
-    <!-- Section FAQ simplifiée -->
     <div class="max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-20">
       <div class="text-center mb-8 sm:mb-10 md:mb-12">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
           <span class="text-gray-900">Questions </span>
           <span class="text-orange-600">fréquentes</span>
         </h2>
-        <p class="text-sm sm:text-base text-gray-700">
+        <p class="text-base sm:text-lg text-gray-700">
           Tout ce que vous devez savoir sur nos tarifs
         </p>
       </div>
 
       <div class="space-y-4 sm:space-y-5">
-        <!-- FAQ Item 1 -->
         <div
           class="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
           <div class="p-4 sm:p-5 md:p-6">
@@ -215,7 +193,6 @@
           </div>
         </div>
 
-        <!-- FAQ Item 2 -->
         <div
           class="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
           <div class="p-4 sm:p-5 md:p-6">
@@ -238,7 +215,6 @@
           </div>
         </div>
 
-        <!-- FAQ Item 3 -->
         <div
           class="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
           <div class="p-4 sm:p-5 md:p-6">
@@ -261,7 +237,6 @@
           </div>
         </div>
 
-        <!-- FAQ Item 4 -->
         <div
           class="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
           <div class="p-4 sm:p-5 md:p-6">
@@ -285,7 +260,6 @@
           </div>
         </div>
 
-        <!-- FAQ Item 5 -->
         <div
           class="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden hover:shadow-2xl transition-all duration-300">
           <div class="p-4 sm:p-5 md:p-6">
@@ -310,11 +284,8 @@
         </div>
       </div>
     </div>
-
-    <!-- CTA Final -->
     <div class="text-center mt-12 sm:mt-16 md:mt-20 lg:mt-24">
       <div class="relative max-w-5xl mx-auto">
-        <!-- Glow effect -->
         <div
           class="absolute -inset-3 bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-3xl blur-3xl opacity-20 animate-pulse">
         </div>

@@ -1,7 +1,6 @@
 export interface PricingPlan {
   id: string;
   name: string;
-  description: string;
   highlight: string;
   price: {
     monthly: number;

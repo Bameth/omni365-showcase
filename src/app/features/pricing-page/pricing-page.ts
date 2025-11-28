@@ -16,30 +16,49 @@ export class PricingPage implements OnInit {
 
   plans: PricingPlan[] = [
     {
+      id: 'essai-gratuit',
+      name: "Particuliers",
+      highlight: 'Essai gratuit',
+      price: {
+        monthly: 0,
+        yearly: 0, // 50000 * 12 * 0.9 (10% de réduction)
+      },
+      originalPrice: {
+        monthly: 0,
+        yearly: 0, // 50000 * 12
+      },
+      maxUsers: '1',
+      storage: '10 GO',
+      support: '24/7',
+      features: [
+        '1 compte gratuit',
+        'Files + Chat + Calendrier',
+        'Support technique 24/7',
+        '10 GO de stockage',
+      ],
+      cta: 'Choisir ce pack',
+      popular: false,
+      enterprise: false,
+      pricePerAccount: '',
+    },
+    {
       id: 'tpe-pme',
       name: 'TPE/PME',
-      description: 'Moyennes équipes',
-      highlight: 'Moyennes équipes',
+      highlight: 'Equipe de taille moyenne',
       price: {
-        // NOUVEAU COÛT MENSUEL : 137 475 FCFA
         monthly: 137475,
-        // NOUVEAU COÛT ANNUEL (avec 10% de réduction) : 1 484 730 FCFA
-        yearly: 1484730,
+        yearly: 1484730, // avec 10% de réduction
       },
       originalPrice: {
         monthly: 137475,
-        // COÛT ANNUEL SANS RÉDUCTION : 1 649 700 FCFA
-        yearly: 1649700,
+        yearly: 1649700, // sans réduction
       },
       maxUsers: '25',
-      // NOUVEAU STOCKAGE : 1 TO
       storage: '1 TO',
       support: '24/7',
       features: [
-        // NOUVELLE SOLUTION : Omni365
-        '25 comptes professionnels Solution Omni365',
+        '25 comptes professionnels (Solution Omni365)',
         'Files + Chat + Calendrier',
-        // Mise à jour de la fonctionnalité de stockage
         '1 TO de Stockage cloud sécurisé par utilisateur',
         'Support technique 24/7',
         'Collaboration en temps réel',
@@ -48,13 +67,11 @@ export class PricingPage implements OnInit {
       cta: 'Choisir ce pack',
       popular: true,
       enterprise: false,
-      // NOUVEAU COÛT PAR COMPTE : 5 499 FCFA par compte
       pricePerAccount: '5 499 FCFA par compte',
     },
     {
       id: 'enterprise',
       name: 'Entreprise',
-      description: 'Flexible',
       highlight: 'Flexible',
       price: {
         monthly: 0,

@@ -9,6 +9,7 @@ import { Support } from './features/support/support';
 import { PricingPage } from './features/pricing-page/pricing-page';
 import { ContactPageSurMesure } from './features/contact-surmesure/contact-pageSurMesure';
 import { ThankYouSurMesure } from './features/merci-surmesure/thankyou';
+import { ContactFree } from './features/contact-free/contact-free';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,7 @@ export const routes: Routes = [
       { path: '', component: LandingPage },
       { path: 'not-found', component: NotFoundComponent },
       { path: 'contact', component: ContactPage },
-      { path: 'contact', component: ContactPage },
+      { path: 'contact/gratuit', component: ContactFree },
       { path: 'ressources', component: Ressource },
       { path: 'tarifs', component: PricingPage },
       { path: 'contact/surmesure', component: ContactPageSurMesure },
