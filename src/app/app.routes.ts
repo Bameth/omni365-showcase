@@ -18,14 +18,13 @@ export const routes: Routes = [
     children: [
       { path: '', component: LandingPage },
       { path: 'not-found', component: NotFoundComponent },
-      { path: 'contact', component: ContactPage },
-      { path: 'contact/gratuit', component: ContactFree },
+      { path: 'tpe-pme', component: ContactPage },
+      { path: 'particulier', component: ContactFree },
       { path: 'ressources', component: Ressource },
       { path: 'tarifs', component: PricingPage },
-      { path: 'contact/surmesure', component: ContactPageSurMesure },
+      { path: 'sur-mesure', component: ContactPageSurMesure },
       { path: 'support', component: Support },
-      { path: 'merci', component: ThankYou },
-      { path: 'vous-serez-contacter', component: ThankYouSurMesure },
+      { path: 'merci', component: ThankYouSurMesure },
     ],
   },
   // Redirection pour toutes les routes non trouvées

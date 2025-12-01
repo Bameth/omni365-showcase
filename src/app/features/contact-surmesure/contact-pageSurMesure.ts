@@ -142,7 +142,7 @@ export class ContactPageSurMesure implements OnDestroy {
 
           // Rediriger vers la page de remerciement après 1.5 secondes
           setTimeout(() => {
-            this.router.navigate(['/vous-serez-contacter']);
+            this.router.navigate(['/merci']);
           }, 1500);
         },
         error: (error) => {

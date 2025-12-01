@@ -18,4 +18,5 @@ export interface PricingPlan {
   popular: boolean;
   enterprise: boolean;
   pricePerAccount?: string;
+  routerLink: string;
 }

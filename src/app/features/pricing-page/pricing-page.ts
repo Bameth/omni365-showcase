@@ -17,15 +17,15 @@ export class PricingPage implements OnInit {
   plans: PricingPlan[] = [
     {
       id: 'essai-gratuit',
-      name: "Particuliers",
+      name: 'Particuliers',
       highlight: 'Essai gratuit',
       price: {
         monthly: 0,
-        yearly: 0, // 50000 * 12 * 0.9 (10% de réduction)
+        yearly: 0,
       },
       originalPrice: {
         monthly: 0,
-        yearly: 0, // 50000 * 12
+        yearly: 0,
       },
       maxUsers: '1',
       storage: '10 GO',
@@ -40,6 +40,7 @@ export class PricingPage implements OnInit {
       popular: false,
       enterprise: false,
       pricePerAccount: '',
+      routerLink: '/particulier', // ✅ Ajout du routerLink
     },
     {
       id: 'tpe-pme',
@@ -47,11 +48,11 @@ export class PricingPage implements OnInit {
       highlight: 'Equipe de taille moyenne',
       price: {
         monthly: 137475,
-        yearly: 1484730, // avec 10% de réduction
+        yearly: 1484730,
       },
       originalPrice: {
         monthly: 137475,
-        yearly: 1649700, // sans réduction
+        yearly: 1649700,
       },
       maxUsers: '25',
       storage: '1 TO',
@@ -68,6 +69,7 @@ export class PricingPage implements OnInit {
       popular: true,
       enterprise: false,
       pricePerAccount: '5 499 FCFA par compte',
+      routerLink: '/tpe-pme', // ✅ Ajout du routerLink
     },
     {
       id: 'enterprise',
@@ -92,6 +94,7 @@ export class PricingPage implements OnInit {
       popular: false,
       enterprise: true,
       pricePerAccount: 'selon vos besoins',
+      routerLink: '/sur-mesure', // ✅ Ajout du routerLink
     },
   ];
 
