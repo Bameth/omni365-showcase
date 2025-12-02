@@ -32,7 +32,7 @@ export class ContactFree implements OnDestroy {
   phone = '';
   email = '';
   accountUsername = '';
-  readonly emailDomain = '@omni365.heritage.africa';
+  readonly emailDomain = '@omail.africa';
 
   isSubmitting = false;
   formErrors: { [key: string]: string } = {};
