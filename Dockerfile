@@ -1,4 +1,4 @@
-FROM docker.io/node:20.19.0 AS build
+FROM docker.io/library/node:20.19.0 AS build
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build --prod
 
-FROM nginx:alpine
+FROM docker.io/library/nginx:alpine
 
 COPY --from=build /app/dist/* /usr/share/nginx/html
 
