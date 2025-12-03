@@ -10,7 +10,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build --configuration production
+#RUN npm run build --configuration production
+RUN npm run build
 
 # --- PHASE 2 : Serve Angular app with NGINX (OpenShift-compatible) ---
 FROM nginxinc/nginx-unprivileged:1.27-alpine
