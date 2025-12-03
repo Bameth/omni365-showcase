@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-final-cta',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './final-cta.html',
-  styleUrl: './final-cta.css'
+  styleUrl: './final-cta.css',
 })
 export class FinalCTA {
-
+  scrollToTarifs() {
+    const element = document.getElementById('tarifs');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
 }
