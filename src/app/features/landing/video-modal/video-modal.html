@@ -1,0 +1,149 @@
+<!-- Modal Overlay - z-[60] pour être au-dessus du header qui est z-50 -->
+<div *ngIf="isOpen"
+  class="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 md:p-6 animate-fadeIn overflow-y-auto"
+  (click)="closeModal()">
+  <!-- Backdrop avec blur -->
+  <div class="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
+
+  <!-- Modal Container - Optimisé mobile -->
+  <div class="relative w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl my-auto animate-scaleIn"
+    (click)="$event.stopPropagation()">
+    <!-- Header du Modal - Responsive -->
+    <div class="flex items-center justify-between mb-2 sm:mb-3 md:mb-4 px-1 sm:px-2">
+      <!-- Info Section - Cachée sur très petit écran -->
+      <div class="hidden xs:flex items-center gap-2 sm:gap-3">
+        <div
+          class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+            </path>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <div class="hidden sm:block">
+          <h3 class="text-base sm:text-lg md:text-xl font-bold text-white leading-tight">Démo Omni365</h3>
+          <p class="text-xs sm:text-sm text-gray-300">Découvrez notre plateforme en action</p>
+        </div>
+      </div>
+
+      <!-- Titre simplifié pour mobile -->
+      <div class="flex xs:hidden items-center gap-2">
+        <div
+          class="w-7 h-7 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center shadow-lg">
+          <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+            </path>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-sm font-bold text-white">Démo Omni365</h3>
+      </div>
+
+      <!-- Boutons de contrôle - Responsive -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button (click)="toggleFullscreen()"
+          class="group p-2 sm:p-2.5 md:p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
+          title="Plein écran">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-orange-400 transition-colors" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+          </svg>
+        </button>
+        <button (click)="closeModal()"
+          class="group p-2 sm:p-2.5 md:p-3 bg-white/10 hover:bg-red-500/90 backdrop-blur-sm rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
+          title="Fermer">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Video Container - Aspect ratio 16:9 pour mobile -->
+    <div #videoContainer
+      class="relative bg-black rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl ring-1 sm:ring-2 ring-white/20"
+      style="aspect-ratio: 16/9;">
+      <!-- Video Player -->
+      <video #videoPlayer class="w-full h-full object-contain" [src]="videoSrc" controls controlsList="nodownload"
+        playsinline preload="metadata" (loadedmetadata)="onVideoLoaded()" (play)="onVideoPlay()"
+        (pause)="onVideoPause()" (ended)="onVideoEnded()">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+      </video>
+
+      <!-- Loading Spinner - Taille responsive -->
+      <div *ngIf="isLoading" class="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="flex flex-col items-center gap-3 sm:gap-4">
+          <div
+            class="w-12 h-12 sm:w-16 sm:h-16 border-3 sm:border-4 border-orange-500 border-t-transparent rounded-full animate-spin">
+          </div>
+          <p class="text-white font-medium text-sm sm:text-base">Chargement de la vidéo...</p>
+        </div>
+      </div>
+
+      <!-- Play Overlay (quand vidéo en pause) - Taille responsive -->
+      <div *ngIf="!isPlaying && !isLoading"
+        class="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer group"
+        (click)="playVideo()">
+        <div
+          class="w-16 h-16 sm:w-20 sm:h-20 bg-orange-600/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-orange-500 transition-all duration-300 active:scale-95">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Footer - Responsive -->
+    <div
+      class="mt-2 sm:mt-3 md:mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 px-1 sm:px-2">
+      <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-300">
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Durée: {{ videoDuration }}</span>
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Qualité HD</span>
+        </div>
+      </div>
+
+      <button (click)="restartVideo()"
+        class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 hover:bg-orange-600 rounded-lg transition-all duration-300 text-white text-xs sm:text-sm font-medium hover:scale-105 active:scale-95 whitespace-nowrap">
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+          </path>
+        </svg>
+        <span class="hidden xs:inline">Recommencer</span>
+        <span class="xs:hidden">Relancer</span>
+      </button>
+    </div>
+
+    <!-- Keyboard Shortcuts Info - Masqué sur mobile, visible sur tablette+ -->
+    <div class="hidden sm:block mt-2 md:mt-3 text-center text-xs text-gray-400">
+      <span class="inline-flex items-center gap-2 flex-wrap justify-center">
+        <kbd class="px-2 py-1 bg-white/10 rounded">Espace</kbd> Lecture/Pause
+        <span class="mx-1">•</span>
+        <kbd class="px-2 py-1 bg-white/10 rounded">F</kbd> Plein écran
+        <span class="mx-1">•</span>
+        <kbd class="px-2 py-1 bg-white/10 rounded">Esc</kbd> Fermer
+      </span>
+    </div>
+
+    <!-- Instructions tactiles pour mobile -->
+    <div class="sm:hidden mt-2 text-center text-xs text-gray-400">
+      <span class="inline-flex items-center gap-2">
+        Touchez la vidéo pour la contrôler
+      </span>
+    </div>
+  </div>
+</div>

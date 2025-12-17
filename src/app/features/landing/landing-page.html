@@ -73,7 +73,7 @@
             </span>
           </button>
 
-          <button
+          <button (click)="openVideoDemo()"
             class="group relative cursor-pointer bg-white/90 backdrop-blur-md border-2 border-gray-300 hover:border-orange-600 hover:bg-orange-50 text-gray-800 hover:text-orange-600 font-bold px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl text-sm sm:text-base">
             <span class="relative flex items-center justify-center gap-2.5">
               <svg class="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0" fill="none"
@@ -255,36 +255,6 @@
                   </p>
                 </div>
               </div>
-
-              <!-- Stats bar -->
-              <!-- <div class="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-orange-200">
-                <div class="grid grid-cols-3 gap-3 sm:gap-4 text-center">
-                  <div>
-                    <div
-                      class="text-lg sm:text-xl md:text-2xl font-black text-orange-600"
-                    >
-                      50GB
-                    </div>
-                    <div class="text-xs text-gray-600">Stockage</div>
-                  </div>
-                  <div>
-                    <div
-                      class="text-lg sm:text-xl md:text-2xl font-black text-orange-600"
-                    >
-                      24/7
-                    </div>
-                    <div class="text-xs text-gray-600">Support</div>
-                  </div>
-                  <div>
-                    <div
-                      class="text-lg sm:text-xl md:text-2xl font-black text-orange-600"
-                    >
-                      99.9%
-                    </div>
-                    <div class="text-xs text-gray-600">Uptime</div>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -292,6 +262,9 @@
     </div>
   </div>
 </section>
+
+<!-- Modal Vidéo -->
+<app-video-modal></app-video-modal>
 
 <app-tarifs></app-tarifs>
 <app-avantage></app-avantage>
